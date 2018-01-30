@@ -5,6 +5,7 @@ import spacy
 import ujson as json
 from collections import Counter
 import numpy as np
+import jieba
 
 nlp = spacy.blank("en")
 
@@ -12,6 +13,11 @@ nlp = spacy.blank("en")
 def word_tokenize(sent):
     doc = nlp(sent)
     return [token.text for token in doc]
+
+
+def cn_tokenize(sent):
+    doc = jieba.lcut(sent)
+    return doc
 
 
 def convert_idx(text, tokens):
